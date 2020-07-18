@@ -180,18 +180,15 @@ export default {
       }
     },
     findMatch(str) {
-      if (str.trim() !== '') {
-        this.displayedList = this.staticArr.filter((item) =>
-          item.name.match(str)
-        )
-      } else {
-        this.displayedList = JSON.parse(JSON.stringify(this.staticArr))
-      }
+      this.displayedList =
+        str.trim() !== ''
+          ? this.staticArr.filter((item) => item.name.match(str))
+          : JSON.parse(JSON.stringify(this.staticArr))
     },
     clear() {
       this.inputWord = ''
-      this.visible = !this.clear
-      this.readList()
+      this.visible = !this.visible
+      this.displayedList = JSON.parse(JSON.stringify(this.staticArr))
     },
   },
 }
